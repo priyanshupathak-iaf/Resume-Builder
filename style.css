@@ -1,0 +1,592 @@
+/* ══════════════════════════════════════════════════
+   RESUME MAKER PRO — style.css
+   ══════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --navy:        #0f1623;
+  --navy2:       #1a2438;
+  --navy3:       #243048;
+  --gold:        #c9a84c;
+  --gold2:       #e8c96a;
+  --text:        #e8eaf0;
+  --muted:       #8a96ad;
+  --border:      rgba(255,255,255,0.09);
+  --input-bg:    rgba(255,255,255,0.05);
+  --input-bd:    rgba(255,255,255,0.12);
+  --accent:      #4f8ef5;
+}
+
+/* ── Layout ── */
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--navy);
+  color: var(--text);
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ══════════════════════════════════════════════════
+   LEFT PANEL — FORM
+   ══════════════════════════════════════════════════ */
+.form-panel {
+  width: 420px;
+  min-width: 420px;
+  background: var(--navy);
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.panel-header {
+  padding: 22px 28px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--navy2);
+}
+
+.panel-header h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--gold2);
+  letter-spacing: 0.3px;
+}
+
+.panel-header p {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+/* ── Tabs ── */
+.section-tabs {
+  display: flex;
+  gap: 2px;
+  padding: 10px 16px;
+  background: var(--navy2);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+}
+
+.tab-btn:hover {
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+}
+
+.tab-btn.active {
+  background: rgba(201,168,76,0.15);
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.25);
+}
+
+/* ── Form Body ── */
+.form-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--navy3) transparent;
+}
+
+.form-body::-webkit-scrollbar { width: 4px; }
+.form-body::-webkit-scrollbar-track { background: transparent; }
+.form-body::-webkit-scrollbar-thumb { background: var(--navy3); border-radius: 2px; }
+
+/* ── Sections ── */
+.section { display: none; }
+.section.active { display: block; }
+
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--gold);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-title .icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(201,168,76,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+/* ── Grid Rows ── */
+.row         { display: grid; gap: 12px; margin-bottom: 12px; }
+.row.cols-2  { grid-template-columns: 1fr 1fr; }
+.row.cols-1  { grid-template-columns: 1fr; }
+
+/* ── Fields ── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+input[type="date"],
+textarea,
+select {
+  background: var(--input-bg);
+  border: 1px solid var(--input-bd);
+  border-radius: 6px;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  padding: 8px 12px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  width: 100%;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: rgba(201,168,76,0.5);
+  background: rgba(255,255,255,0.07);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 72px;
+  line-height: 1.5;
+}
+
+select option {
+  background: #1a2438;
+  color: var(--text);
+}
+
+/* ── Add Button ── */
+.add-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(201,168,76,0.08);
+  border: 1px dashed rgba(201,168,76,0.3);
+  color: var(--gold);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.add-btn:hover {
+  background: rgba(201,168,76,0.15);
+  border-color: rgba(201,168,76,0.5);
+}
+
+/* ── Entry Cards ── */
+.entry-card {
+  background: var(--navy2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.entry-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.entry-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.remove-btn {
+  background: rgba(255,80,80,0.1);
+  border: none;
+  color: #ff5050;
+  font-size: 11px;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.2s;
+}
+
+.remove-btn:hover { background: rgba(255,80,80,0.2); }
+
+/* ── Skills Tags ── */
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.skill-tag {
+  background: rgba(79,142,245,0.12);
+  border: 1px solid rgba(79,142,245,0.25);
+  color: #91b8f5;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.skill-tag .rm {
+  cursor: pointer;
+  opacity: 0.6;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.skill-tag .rm:hover { opacity: 1; }
+
+.skill-input-row { display: flex; gap: 8px; }
+.skill-input-row input { flex: 1; }
+
+.skill-add-btn {
+  background: rgba(79,142,245,0.12);
+  border: 1px solid rgba(79,142,245,0.25);
+  color: #91b8f5;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.skill-add-btn:hover { background: rgba(79,142,245,0.22); }
+
+/* ══════════════════════════════════════════════════
+   RIGHT PANEL — PREVIEW
+   ══════════════════════════════════════════════════ */
+.preview-panel {
+  flex: 1;
+  background: #d4cfc7;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px;
+}
+
+/* ── Toolbar ── */
+.preview-toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  align-self: flex-end;
+  padding-right: 8px;
+}
+
+.preview-btn {
+  background: white;
+  border: none;
+  color: #333;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  transition: all 0.2s;
+}
+
+.preview-btn:hover {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transform: translateY(-1px);
+}
+
+.preview-btn.primary {
+  background: #0f1623;
+  color: white;
+}
+
+/* ══════════════════════════════════════════════════
+   RESUME SHEET
+   ══════════════════════════════════════════════════ */
+#resume-sheet {
+  width: 794px;
+  min-height: 1123px;
+  background: white;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  font-family: 'Lato', sans-serif;
+  color: #1a1a2e;
+  overflow: hidden;
+}
+
+/* ── Resume Header ── */
+.resume-header {
+  background: #0f1623;
+  color: white;
+  padding: 36px 48px 28px;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.resume-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid rgba(201,168,76,0.6);
+  object-fit: cover;
+  flex-shrink: 0;
+  display: none;
+}
+
+.resume-avatar.visible { display: block; }
+
+.resume-avatar-placeholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid rgba(201,168,76,0.4);
+  background: rgba(201,168,76,0.1);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--gold2);
+  font-family: 'Playfair Display', serif;
+}
+
+.resume-name-block { flex: 1; }
+
+.resume-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: white;
+  line-height: 1.1;
+}
+
+.resume-title {
+  font-size: 14px;
+  font-weight: 300;
+  color: #c9a84c;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+
+.resume-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin-top: 14px;
+}
+
+.resume-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  color: #b0bcd0;
+}
+
+.resume-contact-item .ci {
+  width: 14px;
+  text-align: center;
+  opacity: 0.7;
+}
+
+/* ── Resume Body ── */
+.resume-body {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+}
+
+.resume-main { padding: 28px 36px; }
+.resume-side { background: #f4f3f0; padding: 28px 24px; }
+
+/* ── Resume Sections ── */
+.r-section { margin-bottom: 24px; }
+
+.r-section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f1623;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #c9a84c;
+  margin-bottom: 14px;
+}
+
+/* Objective */
+.r-objective {
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: #3a3a5c;
+}
+
+/* Experience */
+.r-exp-item { margin-bottom: 16px; }
+
+.r-exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2px;
+}
+
+.r-exp-title  { font-size: 13px; font-weight: 700; color: #0f1623; }
+.r-exp-company { font-size: 12px; font-weight: 400; color: #c9a84c; margin-top: 1px; }
+
+.r-exp-dates {
+  font-size: 10.5px;
+  color: #7a8099;
+  white-space: nowrap;
+  font-style: italic;
+}
+
+.r-exp-desc {
+  font-size: 11.5px;
+  color: #4a4a6a;
+  line-height: 1.6;
+  margin-top: 5px;
+}
+
+.r-exp-desc ul { padding-left: 14px; }
+.r-exp-desc li { margin-bottom: 2px; }
+
+/* Education */
+.r-edu-item  { margin-bottom: 14px; }
+.r-edu-degree { font-size: 12.5px; font-weight: 700; color: #0f1623; }
+.r-edu-school { font-size: 11.5px; color: #555; margin-top: 2px; }
+.r-edu-year   { font-size: 10.5px; color: #7a8099; font-style: italic; margin-top: 1px; }
+.r-edu-gpa    { font-size: 10.5px; color: #c9a84c; margin-top: 1px; }
+
+/* Skills */
+.r-skills-group { margin-bottom: 12px; }
+
+.r-skills-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #0f1623;
+  margin-bottom: 5px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.r-skill-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+
+.r-skill-tag {
+  background: #e8e4dc;
+  color: #0f1623;
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+/* Certifications */
+.r-cert-item  { margin-bottom: 10px; }
+.r-cert-name  { font-size: 12px; font-weight: 600; color: #0f1623; }
+.r-cert-org   { font-size: 11px; color: #777; }
+.r-cert-date  { font-size: 10px; color: #9aa; font-style: italic; }
+
+/* Languages */
+.r-lang-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 7px;
+}
+
+.r-lang-name  { font-size: 12px; font-weight: 600; color: #0f1623; }
+.r-lang-level { font-size: 10.5px; color: #888; }
+
+/* Projects */
+.r-proj-item  { margin-bottom: 14px; }
+.r-proj-name  { font-size: 12.5px; font-weight: 700; color: #0f1623; }
+.r-proj-tech  { font-size: 10.5px; color: #c9a84c; margin-top: 1px; }
+.r-proj-desc  { font-size: 11.5px; color: #4a4a6a; line-height: 1.6; margin-top: 4px; }
+.r-proj-link  { font-size: 10.5px; color: #4f8ef5; margin-top: 2px; }
+
+/* Interests */
+.r-interest-list { display: flex; flex-wrap: wrap; gap: 5px; }
+
+.r-interest-tag {
+  background: #e8e4dc;
+  color: #555;
+  font-size: 10.5px;
+  padding: 3px 9px;
+  border-radius: 10px;
+}
+
+/* ══════════════════════════════════════════════════
+   PRINT / PDF EXPORT
+   ══════════════════════════════════════════════════ */
+@media print {
+  body { background: white; }
+  .form-panel,
+  .preview-toolbar { display: none !important; }
+  .preview-panel { background: white; padding: 0; }
+  #resume-sheet { box-shadow: none; width: 100%; }
+}
